@@ -1,0 +1,9 @@
+import os,sys
+
+def add(x,y):
+  result=x+y
+  return result
+
+unused_var = 100
+
+print(add(3, 4))
