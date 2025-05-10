@@ -1,14 +1,28 @@
 import pytest
 
 
+class Spoon:
+    def __init__(self):
+        self.clean = True
+
+    def use(self):
+        self.clean = False
+
+
 @pytest.fixture
-def sample_data():
-    return {"name": "이종화", "age": 20}
+def spoon():
+    # 매 테스트마다 새 숟가락 제공
+    return Spoon()
 
 
-def test_name(sample_data):
-    assert sample_data["name"] == "이종화"
+def test_soup(spoon):
+    assert spoon.clean
+    spoon.use()
+    assert not spoon.clean
 
 
-def test_age(sample_data):
-    assert sample_data["age"] == 20
+def test_stew(spoon):
+    # 이전 테스트에서 사용된 흔적 없음
+    assert spoon.clean
+    spoon.use()
+    assert not spoon.clean
