@@ -1,7 +1,5 @@
 from unittest.mock import patch
 
-import pytest
-
 
 def test_contains_profanity_true_cases(profanity_list):
     """욕설 포함 여부 테스트"""
@@ -46,11 +44,6 @@ def test_contains_profanity_false_cases(profanity_list):
     assert not any(results)
 
 
-@pytest.fixture
-def admin_profanity_list():
-    return ["가지무침", "솔의눈", "데자와"]
-
-
 def test_profanity_list_from_mock_admin(admin_profanity_list):
     """관리자 서비스에서 욕설 목록을 가져오는지 테스트, mock 사용"""
     # given
@@ -76,8 +69,8 @@ def test_profanity_list_from_mock_admin(admin_profanity_list):
         assert all(results)
 
 
-def test_profanity_list_from_admin(admin_profanity_list):
-    """관리자 서비스에서 욕설 목록을 가져오는지 테스트, mock 사용"""
+def test_profanity_list_from_admin():
+    """관리자 서비스에서 욕설 목록을 가져오는지 테스트, mock 미사용"""
     # given
     from app.services.admin import get_profanity_list_from_admin_service
     from app.validators.profanity_validator import ProfanityValidator

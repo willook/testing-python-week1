@@ -30,3 +30,8 @@ def client():
 @pytest.fixture
 def profanity_list():
     return ["파인애플피자", "민트초코", "파인애플 피자", "민트 초코"]
+
+
+@pytest.fixture
+def admin_profanity_list():
+    return ["가지무침", "솔의눈", "데자와"]
